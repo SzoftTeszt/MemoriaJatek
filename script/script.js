@@ -2,13 +2,24 @@ sorokSzama=6
 oszlopokSzama=6
 
 function balKattintas(){
-    console.log(this.style.backgroundImage)
-    console.log(this.dataset.kep)
-    // this.style.backgroundImage='url("'+this.dataset.kep+'")'
-    this.style.backgroundImage=`url("${this.dataset.kep}")`
-    setTimeout(() => {
-        this.style.backgroundImage="none"
-    }, 3000);    
+    lathatoak = document.getElementsByClassName('latszik')    
+    if (lathatoak.length<=1){
+        this.style.backgroundImage=`url("${this.dataset.kep}")`
+        this.classList.add("latszik")
+        idozito=setTimeout(() => {
+            while(lathatoak[0]){
+                lathatoak[0].style.backgroundImage="none"
+                lathatoak[0].classList.remove('latszik')
+            }
+            // this.style.backgroundImage="none"
+            // this.classList.remove('latszik')
+        }, 3000);
+    }else {
+        clearTimeout(idozito)
+        // Megvizsgálni, hogy kitalálta-e, ha igen szürküljön el, ne regalájon  akattintásra, kapjon egy kitalakt class-t
+        // ha nem, csukjuk vissza
+    }
+
 } 
 
 
