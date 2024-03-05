@@ -11,20 +11,25 @@ h1{
 
 #palya{
     background-color: antiquewhite;
-    max-width: 1000px;
-    width: 95%;
+    max-width: 90vh;
+    /* width: 95%; */
     margin:0 auto;
 }
 
 .cella{
-    width:100px;
-    height:100px;
+    width:10vh;
+    height:10vh;
     background-color: yellow;
     border:1px solid black;
     background-size: cover;
+    float:left
     /* background-image: url("../img/1.png"); */
 }
-
+.sor::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 body{
    
 }
