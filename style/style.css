@@ -21,6 +21,8 @@ h1{
     height:100px;
     background-color: yellow;
     border:1px solid black;
+    background-size: cover;
+    /* background-image: url("../img/1.png"); */
 }
 
 body{
