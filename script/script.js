@@ -1,21 +1,37 @@
-sorokSzama=6
-oszlopokSzama=6
+sorokSzama=2
+oszlopokSzama=2
 
 function balKattintas(){
-    lathatoak = document.getElementsByClassName('latszik')    
-    if (lathatoak.length<=1){
-        this.style.backgroundImage=`url("${this.dataset.kep}")`
-        this.classList.add("latszik")
+    lathatoak = document.getElementsByClassName('latszik') 
+    if (lathatoak.length==0)
         idozito=setTimeout(() => {
             while(lathatoak[0]){
                 lathatoak[0].style.backgroundImage="none"
                 lathatoak[0].classList.remove('latszik')
-            }
-            // this.style.backgroundImage="none"
-            // this.classList.remove('latszik')
+            }            
         }, 3000);
-    }else {
-        clearTimeout(idozito)
+
+    if (lathatoak.length<=1){
+        this.style.backgroundImage=`url("${this.dataset.kep}")`
+        this.classList.add("latszik")
+    }
+    if (lathatoak.length==2)
+     {
+        if (lathatoak[0].dataset.kep===lathatoak[1].dataset.kep){
+            clearTimeout(idozito)
+            while(lathatoak[0]){  
+                lathatoak[0].classList.add("kitalalt")
+                lathatoak[0].removeEventListener('click', balKattintas)          
+                lathatoak[0].classList.remove('latszik')
+            }   
+            if (document.getElementsByClassName('kitalalt').length==(sorokSzama*oszlopokSzama))
+            {
+                document.getElementsByTagName('h2')[0].innerHTML="Győztél! Új játék - F5!"
+                // alert("Győztél! Új játék - F5!")
+            }  
+        }
+        
+        
         // Megvizsgálni, hogy kitalálta-e, ha igen szürküljön el, ne regalájon  akattintásra, kapjon egy kitalakt class-t
         // ha nem, csukjuk vissza
     }
